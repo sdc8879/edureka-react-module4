@@ -1,49 +1,69 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { useDispatch } from "react-redux";
 
-export default function EnquiryForm({ currentCourseName }) {
+// function EnquiryForm({props}) { /**When we are passing parent to child data to child functional component we have to used like this way */
+
+function EnquiryForm(props) {   /** Here accessing state by using mapStateToProps we have to have pass props this way */
   const dispatch = useDispatch();
   const [courseName, setCourseName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
+  const [enquires, setEnquires] = useState("");
+
+  // useEffect(() => {
+  //   setCourseName(currentCourseName);
+  // }, [currentCourseName, courseName]);/**When we are passing parent to child data to child functional component we have to used like this way */
 
   useEffect(() => {
-    setCourseName(currentCourseName);
-  }, [currentCourseName, courseName]);
+    /** Here accessing state by using mapStateToProps we have to have pass props this way */
+    console.log(props);
+    setCourseName(props.currentCourseName);
+  }, [props]);
 
   const onCourseNameChange = (e) => {
     setCourseName(e.target.value);
-    dispatch({
-      type: "onChangeCourseName",
-      payload: e.target.value
-    });
   };
   const onFirstNameChange = (e) => {
     setFirstName(e.target.value);
-    dispatch({
-      type: "onChangeFirstName",
-      payload: e.target.value
-    });
   };
   const onLastNameChange = (e) => {
     setLastName(e.target.value);
-    dispatch({
-      type: "onChangeFirstName",
-      payload: e.target.value
-    });
   };
   const onMobileNumberChange = (e) => {
     setMobileNumber(e.target.value);
-    dispatch({
-      type: "onChangeMobileNumber",
-      payload: e.target.value
-    });
+  };
+
+  const onEnquiresChange = (e) => {
+    setEnquires(e.target.value);
   };
 
   const printValues = (e) => {
     e.preventDefault();
-    console.log(courseName, firstName,lastName,mobileNumber);
+    const body = {
+      'currentCourseName': courseName,
+      'firstName': firstName,
+      'lastName': lastName,
+      'mobileNumber': mobileNumber,
+      'enquires': enquires
+    };
+
+    fetch("http://localhost:3001/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    })
+      .then(res => res.json())
+      .then((data) => {
+        setCourseName('');
+        setFirstName('');
+        setLastName('');
+        setMobileNumber('');
+        setEnquires('');
+      })
   };
 
   return (
@@ -90,7 +110,26 @@ export default function EnquiryForm({ currentCourseName }) {
           type="text"
         />
       </label>
+      <br />
+      <br />
+      <label>
+        Enquires:
+        <textarea
+          value={enquires}
+          onChange={onEnquiresChange}
+          name="enquires"
+          type="textarea"
+        />
+      </label>
+      <br />
+      <br />
       <button>Submit</button>
     </form>
   );
 }
+
+function mapStateToProps(state) {
+  return { currentCourseName: state['currentCourseName'] };
+}
+
+export default connect(mapStateToProps)(EnquiryForm);

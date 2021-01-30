@@ -32,7 +32,8 @@
       "firstName": "kajal",
       "lastName": "n",
       "mobileNumber": "7417417417",
-      "id": 1
+      "id": 1,
+      "enquires":"Duration ?"
     },
     {
       "currentCourseName": "C1",
@@ -47,6 +48,27 @@
       "lastName": "rty",
       "mobileNumber": "9511599515",
       "id": 3
+    },
+    {
+      "currentCourseName": "C5",
+      "firstName": "qaz",
+      "lastName": "zaq",
+      "mobileNumber": "123",
+      "id": 4
+    },
+    {
+      "currentCourseName": "C2",
+      "firstName": "ygjbw",
+      "lastName": "erijph",
+      "mobileNumber": "9846513",
+      "id": 5
+    },
+    {
+      "currentCourseName": "C3",
+      "firstName": "hujkb",
+      "lastName": "jghgmb",
+      "mobileNumber": "897651",
+      "id": 6
     }
   ]
 }
