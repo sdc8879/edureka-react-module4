@@ -18,7 +18,6 @@ function EnquiryForm(props) {   /** Here accessing state by using mapStateToProp
 
   useEffect(() => {
     /** Here accessing state by using mapStateToProps we have to have pass props this way */
-    console.log(props);
     setCourseName(props.currentCourseName);
   }, [props]);
 
@@ -63,6 +62,7 @@ function EnquiryForm(props) {   /** Here accessing state by using mapStateToProp
         setLastName('');
         setMobileNumber('');
         setEnquires('');
+        props.enquiryFormSubmit();
       })
   };
 
@@ -132,4 +132,14 @@ function mapStateToProps(state) {
   return { currentCourseName: state['currentCourseName'] };
 }
 
-export default connect(mapStateToProps)(EnquiryForm);
+function mapDispatchToProps(dispatch) {
+  return {
+    enquiryFormSubmit:()=>{
+      return dispatch({
+        type:"ENQUIRY_FORM_SUCCESS"
+      });
+    } 
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(EnquiryForm);
