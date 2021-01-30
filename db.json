@@ -29,24 +29,59 @@
   "users": [
     {
       "currentCourseName": "C2",
-      "firstName": "kajal",
-      "lastName": "n",
-      "mobileNumber": "7417417417",
+      "firstName": "aa",
+      "lastName": "bb",
+      "mobileNumber": "111222",
+      "enquires": "batch ?",
       "id": 1
     },
     {
-      "currentCourseName": "C1",
-      "firstName": "shkdf",
-      "lastName": "ueitr",
-      "mobileNumber": "854155468",
+      "currentCourseName": "C2",
+      "firstName": "qq",
+      "lastName": "aa",
+      "mobileNumber": "22",
+      "enquires": "abc?",
       "id": 2
     },
     {
       "currentCourseName": "C3",
-      "firstName": "ytr",
-      "lastName": "rty",
-      "mobileNumber": "9511599515",
+      "firstName": "qaz",
+      "lastName": "zaq",
+      "mobileNumber": "789",
+      "enquires": "qaz ?",
       "id": 3
+    },
+    {
+      "currentCourseName": "C1",
+      "firstName": "ouhkj",
+      "lastName": "iygjhb",
+      "mobileNumber": "87946513",
+      "enquires": "hiyufhgv ?",
+      "id": 4
+    },
+    {
+      "currentCourseName": "C2",
+      "firstName": "ok",
+      "lastName": "oklm",
+      "mobileNumber": "789465",
+      "enquires": "gjh?",
+      "id": 5
+    },
+    {
+      "currentCourseName": "C4",
+      "firstName": "uhkj",
+      "lastName": "opki",
+      "mobileNumber": "ikj",
+      "enquires": "iokj",
+      "id": 6
+    },
+    {
+      "currentCourseName": "C2",
+      "firstName": "iouhjknm",
+      "lastName": "ljkj",
+      "mobileNumber": "89465",
+      "enquires": "iuhigukhvb ?",
+      "id": 7
     }
   ]
 }

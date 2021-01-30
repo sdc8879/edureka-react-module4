@@ -1,66 +1,27 @@
-import React from "react";
-import { connect } from "react-redux";
-import CourseList from "./CourseList";
-import EnquiryForm from "./EnquiryForm";
+import React from "react"
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom"
+import "./App.css"
 
-class App extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+import Home from "./Home"
+import UserInfo from "./UserInfo"
 
-  // componentDidMount() {
-  //   this.props.getList();   Here actions diretly dispatched
-  // }
-
-  componentDidMount() {
-    this.getCourseList();
-  }
-
-  getCourseList() {
-    let url = "http://localhost:3001/courses";
-    fetch(url)
-      .then(res => res.json())
-      .then((data) => {
-        this.props.getList(data);
-      })
-      .catch(console.log)
-  }
-
-  render() {
-    let formDiv;
-    if (this.props.enableForm) {
-      formDiv = (
-        <EnquiryForm
-          currentCourseName={this.props.enquiryFormdata.currentCourseName}
-        ></EnquiryForm>
-      );
-    }
-    return (
-      <div className="container">
-        <CourseList clist={this.props.courseList}></CourseList>
-        <br></br>
-        {formDiv}
-      </div>
-    );
-  }
+function App() {
+	return (
+		<Router>
+			<div>
+				<nav style={{ margin: 10 }}>
+					<NavLink to='/' exact activeClassName='active'>
+						Home
+					</NavLink>
+					<NavLink to='/userinfo' activeClassName='active'>
+						User Information
+					</NavLink>
+				</nav>
+				<Route path='/' exact component={Home} />
+				<Route path='/userinfo' component={UserInfo} />
+			</div>
+		</Router>
+	)
 }
-const mapStateToProps = (state) => {
-  return {
-    courseList: state.courseList,
-    enableForm: state.enableForm,
-    enquiryFormdata: state.enquiryFormdata
-  };
-};
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     getList: () => dispatch({ type: "GET_LIST" })   FOR DIRECTLY DISPATCHING ACTION
-//   };
-// };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getList: (courselist) => dispatch({ type: "GET_LIST", payload: courselist })
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App
